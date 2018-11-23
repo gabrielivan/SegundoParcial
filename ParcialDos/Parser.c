@@ -67,24 +67,24 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* listaVenta)
     return retorno;
 }
 
-//int parser_SaveToText(FILE* pFile,LinkedList* listaVentas)
-//{
-//    int retorno = -1;
-//    int cantidadTotal;
-//    int cantidadMontoMayor;
-//    int cantidadMontoMayorMas;
-//    int cantidadLcdTV;
-//
-//    cantidadTotal = informe_cantidadTotal(listaVentas);
-//    cantidadMontoMayor = informe_cantidadMontoMayor(listaVentas);
-//    cantidadMontoMayorMas = informe_cantidadMontoMayorMas(listaVentas);
-//    cantidadLcdTV = informe_cantidadLcdTV(listaVentas);
-//
-//    if(pFile != NULL)
-//    {
-//        fprintf(pFile,"%d,%d,%d,%d \n",cantidadTotal,cantidadMontoMayor,cantidadMontoMayorMas,cantidadLcdTV);
-//        retorno = 0;
-//    }
-//
-//    return retorno;
-//}
+int parser_SaveToText(FILE* pFile,LinkedList* listaVentas)
+{
+    int retorno = -1;
+    int cantidadTotal;
+    int cantidadMontoMayor;
+    int cantidadMontoMayorMas;
+    int cantidadLcdTV;
+
+    cantidadTotal = informe_cantidadTotal(listaVentas);
+    cantidadMontoMayor = informe_cantidadMontoMayor(listaVentas);
+    cantidadMontoMayorMas = informe_cantidadMontoMayorMas(listaVentas);
+    cantidadLcdTV = informe_cantidadLcdTV(listaVentas);
+
+    if(pFile != NULL)
+    {
+        fprintf(pFile," Cantidad de unidades vendidas totales: %d\n Cantidad de ventas por un monto mayor a 10000: %d\n Cantidad de ventas por un monto mayor a 20000: %d\n Cantidad de Tvs LCD: %d\n",cantidadTotal,cantidadMontoMayor,cantidadMontoMayorMas,cantidadLcdTV);
+        retorno = 0;
+    }
+
+    return retorno;
+}

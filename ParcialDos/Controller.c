@@ -33,15 +33,15 @@ int controller_loadFromText(char* path , LinkedList* listaVenta)
  * \return [0] Exito y [-1] Error
  */
 
-//int controller_saveAsText(char* path , LinkedList* listaVenta)
-//{
-//    FILE* pArchivo = fopen(path,"w");
-//    int retorno = -1;
-//
-//    if(pArchivo != NULL && !parser_SaveToText(pArchivo,listaVenta))
-//    {
-//        retorno = 0;
-//    }
-//    fclose(pArchivo);
-//    return retorno;
-//}
+int controller_saveAsText(char* path , LinkedList* listaVenta)
+{
+    FILE* pArchivo = fopen(path,"w");
+    int retorno = -1;
+
+    if(pArchivo != NULL && !parser_SaveToText(pArchivo,listaVenta))
+    {
+        retorno = 0;
+    }
+    fclose(pArchivo);
+    return retorno;
+}

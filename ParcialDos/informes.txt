@@ -1,0 +1,4 @@
+ Cantidad de unidades vendidas totales: 1337
+ Cantidad de ventas por un monto mayor a 10000: 41
+ Cantidad de ventas por un monto mayor a 20000: 0
+ Cantidad de Tvs LCD: 33

@@ -7,13 +7,13 @@
 
 int informe_cantidadTotal(LinkedList* listaVentas)
 {
-    int retorno = -1;
+    int retorno = 0;
     int resultadoCount;
 
     if(listaVentas != NULL)
     {
         resultadoCount = ll_count(listaVentas,Venta_cantidadUnidadesTotal);
-        printf("%d",resultadoCount);
+        retorno = resultadoCount;
     }
 
     return retorno;
@@ -21,13 +21,13 @@ int informe_cantidadTotal(LinkedList* listaVentas)
 
 int informe_cantidadMontoMayor(LinkedList* listaVentas)
 {
-    int retorno = -1;
+    int retorno = 0;
     int resultadoCount;
 
     if(listaVentas != NULL)
     {
         resultadoCount = ll_count(listaVentas,Venta_Mayor);
-        printf("%d",resultadoCount);
+        retorno = resultadoCount;
     }
 
     return retorno;
@@ -36,11 +36,13 @@ int informe_cantidadMontoMayor(LinkedList* listaVentas)
 
 int informe_cantidadMontoMayorMas(LinkedList* listaVentas)
 {
-    int retorno = -1;
+    int retorno = 0;
+    int resultadoCount;
 
     if(listaVentas != NULL)
     {
-        retorno = ll_count(listaVentas,Venta_MayorMas);
+        resultadoCount = ll_count(listaVentas,Venta_MayorMas);
+        retorno = resultadoCount;
     }
 
     return retorno;
@@ -48,11 +50,13 @@ int informe_cantidadMontoMayorMas(LinkedList* listaVentas)
 
 int informe_cantidadLcdTV(LinkedList* listaVentas)
 {
-    int retorno = -1;
+    int retorno = 0;
+    int resultadoCount;
 
     if(listaVentas != NULL)
     {
-        retorno = ll_count(listaVentas,Venta_cantidadTvLcd);
+        resultadoCount = ll_count(listaVentas,Venta_cantidadTvLcd);
+        retorno = resultadoCount;
     }
 
     return retorno;
