@@ -882,7 +882,7 @@ int EsFloat(char *pBuffer, int limite)
 }
 
 /**
- * \brief Verifica si el valor recibido contiene solo letras,números o guiones
+ * \brief Verifica si el valor recibido contiene solo letras,números
  * \param array Es el string para validar el tipo
  * \return 1 si contiene solo espacio o letras y números, y 0 si no lo es
  *
@@ -892,26 +892,19 @@ int EsAlfaNumerico(char* array,int size)
 {
     int i=0;
     int retorno = 0;
-    int contadorSimbolos = 0;
 
     if(array != NULL && size > 0)
     {
         retorno = 1;
         for(i=0;i<size;i++)
         {
-            if((array[i] != '_') &&
-              (array[i] < 'a' || array[i] > 'z') &&
-              (array[i] < 'A' || array[i] > 'Z') &&
-              (array[i] < '0' || array[i] > '9') &&
-               contadorSimbolos > 2)
+            if((array[i] >= 'a' || array[i] <= 'z')&&
+               (array[i] >= 'A' || array[i] <= 'Z')&&
+               (array[i] >= '0' || array[i] <= '9')&&
+               (array[i] == ' ' || array[i] == '_'))
             {
-                retorno = 0;
+                retorno = 1;
                 break;
-            }
-
-            if(array[i] == '_')
-            {
-                contadorSimbolos++;
             }
         }
     }

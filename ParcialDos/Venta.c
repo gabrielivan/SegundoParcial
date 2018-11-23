@@ -77,6 +77,18 @@ Venta* Venta_newConParametros(char* idVenta,char* fecha,char* codigoProducto,cha
         !Venta_setFecha(this,fechaAux))
             return this;
     }
+//    else
+//    {
+//        printf(" \nVENTA NO VALIDA: \n");
+//        printf("\n ID: %s\n ",idVenta);
+//        printf("CANTIDAD: %s\n ",cantidad);
+//        printf("PRECIO: %s\n ",precioUnitario);
+//        printf("CODIGO PRODUCTO: %s\n ",codigoProducto);
+//        printf("CUIT DEL CLIENTE: %s\n ",cuitCliente);
+//        printf("FECHA: %s\n ",fecha);
+//        printf("\n\n");
+//
+//    }
 
     Venta_delete(this);
     return NULL;
