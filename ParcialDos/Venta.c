@@ -342,13 +342,15 @@ int Venta_Mayor(void* this)
 {
     int retorno = 0;
     float auxPrecio;
+    int auxCantidad;
     int contadorCantidad = 0;
 
     Venta_getPrecioUnitario(this,&auxPrecio);
+    Venta_getCantidad(this,&auxCantidad);
 
     if(this != NULL)
     {
-        if(auxPrecio > 10000)
+        if(auxPrecio*auxCantidad > 10000)
         {
             contadorCantidad = contadorCantidad + 1;
             retorno = contadorCantidad;
@@ -361,13 +363,15 @@ int Venta_MayorMas(void* this)
 {
     int retorno = 0;
     float auxPrecio;
+    int auxCantidad;
     int contadorCantidad = 0;
 
     Venta_getPrecioUnitario(this,&auxPrecio);
+    Venta_getCantidad(this,&auxCantidad);
 
     if(this != NULL)
     {
-        if(auxPrecio > 20000)
+        if(auxPrecio*auxCantidad > 20000)
         {
             contadorCantidad = contadorCantidad + 1;
             retorno = contadorCantidad;
@@ -396,15 +400,17 @@ int Venta_cantidadTvLcd(void* this)
 {
     int retorno = 0;
     char auxTvLcd[1024];
+    int auxCantidad;
     int contadorTvLcd = 0;
 
     Venta_getCodigoProducto(this,auxTvLcd);
+    Venta_getCantidad(this,&auxCantidad);
 
     if(this != NULL)
     {
         if(strcmp(auxTvLcd,"LCD_TV")== 0)
         {
-            contadorTvLcd++;
+            contadorTvLcd = contadorTvLcd + auxCantidad;
             retorno = contadorTvLcd;
         }
     }
