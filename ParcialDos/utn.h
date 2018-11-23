@@ -55,9 +55,8 @@ int utn_getCelularArgentino(char *pCelular,
 
 int EsEntero(char *pBuffer, int limite);
 int EsNombre(char* pBuffer,int limite);
-int EsFecha(int dia, int mes, int anio);
 int EsCuit(char *pBuffer, int limite);
-int EsFloatPositivo(char *pBuffer, int limite);
-int EsTexto(char *pBuffer, int limite);
+int EsFloat(char *pBuffer, int limite);
+int EsAlfaNumerico(char* array,int size);
 
 #endif // UTN_H_INCLUDED

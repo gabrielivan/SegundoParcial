@@ -669,25 +669,28 @@ int ll_count(LinkedList* this,int (*pFunc)(void* element))
     int returnAux = -1;
     int i;
     void* auxElement = NULL;
-    int contadorElementos = 0;
+    int contadorCantidad = 0;
+    int resultadoFunc = 0;
 
     if(this != NULL && ll_len(this) > 0 && pFunc != NULL)
     {
+        printf("Entre al if del count");
         ll_startIterator(this);
         for(i=0; i<ll_len(this); i++)
         {
             auxElement = ll_getNext(this);
-            if((*pFunc)(auxElement))
+            if((*pFunc)(auxElement) != 0)
             {
-                contadorElementos++;
-                returnAux = contadorElementos;
+                printf("Entre al segundo if del count");
+                resultadoFunc = (pFunc(auxElement));
+                contadorCantidad = contadorCantidad + resultadoFunc;
+                returnAux = contadorCantidad;
             }
             else
             {
-                break;
+               break;
             }
         }
     }
-
     return returnAux;
 }

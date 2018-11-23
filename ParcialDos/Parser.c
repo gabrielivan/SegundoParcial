@@ -10,6 +10,7 @@
  * \param listaVenta LinkedList* lista donde se van a a guardar los empleados
  * \return en caso de exito retorna 0 y en caso de error retorna -1
  */
+
 int parser_EmployeeFromText(FILE* pFile , LinkedList* listaVenta)
 {
     char bufferidVenta[1024];
@@ -21,7 +22,6 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* listaVenta)
     int retorno = -1;
     int flagOnce = 1;
     Venta* pVenta;
-
 
     if(pFile!= NULL)
     {
@@ -37,6 +37,7 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* listaVenta)
                                                 bufferCantidad,
                                                 bufferPrecioUnitario,
                                                 bufferCuitCliente);
+
             }
              fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n",
                                                 bufferidVenta,
@@ -45,14 +46,6 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* listaVenta)
                                                 bufferCantidad,
                                                 bufferPrecioUnitario,
                                                 bufferCuitCliente);
-
-            printf("Idventa: %s\n",bufferidVenta);
-              printf("fecha: %s\n",bufferFecha);
-               printf("codigoP %s\n",bufferCodigoProducto);
-                printf("cantidad %s\n",bufferCantidad);
-                 printf("precioUn %s\n",bufferPrecioUnitario);
-                  printf("cuit %s\n",bufferCuitCliente);
-
 
             pVenta = Venta_newConParametros(        bufferidVenta,
                                                     bufferFecha,
@@ -66,6 +59,7 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* listaVenta)
             {
                 retorno = 0;
                 ll_add(listaVenta,pVenta);
+                Venta_mostrar(pVenta);
             }
 
         }
@@ -73,24 +67,24 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* listaVenta)
     return retorno;
 }
 
-int parser_SaveToText(FILE* pFile,LinkedList* listaVentas)
-{
-    int retorno = -1;
-    int cantidadTotal;
-    int cantidadMontoMayor;
-    int cantidadMontoMayorMas;
-    int cantidadLcdTV;
-
-    cantidadTotal = informe_cantidadTotal(listaVentas);
-    cantidadMontoMayor = informe_cantidadMontoMayor(listaVentas);
-    cantidadMontoMayorMas = informe_cantidadMontoMayorMas(listaVentas);
-    cantidadLcdTV = informe_cantidadLcdTV(listaVentas);
-
-    if(pFile != NULL)
-    {
-        fprintf(pFile,"%d,%d,%d,%d \n",cantidadTotal,cantidadMontoMayor,cantidadMontoMayorMas,cantidadLcdTV);
-        retorno = 0;
-    }
-
-    return retorno;
-}
+//int parser_SaveToText(FILE* pFile,LinkedList* listaVentas)
+//{
+//    int retorno = -1;
+//    int cantidadTotal;
+//    int cantidadMontoMayor;
+//    int cantidadMontoMayorMas;
+//    int cantidadLcdTV;
+//
+//    cantidadTotal = informe_cantidadTotal(listaVentas);
+//    cantidadMontoMayor = informe_cantidadMontoMayor(listaVentas);
+//    cantidadMontoMayorMas = informe_cantidadMontoMayorMas(listaVentas);
+//    cantidadLcdTV = informe_cantidadLcdTV(listaVentas);
+//
+//    if(pFile != NULL)
+//    {
+//        fprintf(pFile,"%d,%d,%d,%d \n",cantidadTotal,cantidadMontoMayor,cantidadMontoMayorMas,cantidadLcdTV);
+//        retorno = 0;
+//    }
+//
+//    return retorno;
+//}

@@ -54,16 +54,16 @@ Venta* Venta_newConParametros(char* idVenta,char* fecha,char* codigoProducto,cha
     this = Venta_new();
     int idVentaInt;
     int cantidadInt;
-    int precioUnitarioInt;
+    float precioUnitarioInt;
     char codigoProductoAux[1024];
-    char cuitClienteAux[14];
+    char cuitClienteAux[1024];
     char fechaAux[1024];
 
-    if(EsEntero(idVenta,1024)&& EsEntero(cantidad,1024)&& EsFloatPositivo(precioUnitario,1024)&& EsCuit(cuitCliente,14))
+    if(EsEntero(idVenta,1024)&& EsEntero(cantidad,1024) && EsFloat(precioUnitario,1024) && EsCuit(cuitCliente,1024) && EsAlfaNumerico(codigoProducto,1024))
     {
         idVentaInt = atoi(idVenta);
         cantidadInt = atoi(cantidad);
-        precioUnitarioInt = atoi(precioUnitario);
+        precioUnitarioInt = atof(precioUnitario);
         strcpy(codigoProductoAux,codigoProducto);
         strcpy(cuitClienteAux,cuitCliente);
         strcpy(fechaAux,fecha);
@@ -72,7 +72,9 @@ Venta* Venta_newConParametros(char* idVenta,char* fecha,char* codigoProducto,cha
         !Venta_setId(this,idVentaInt)&&
         !Venta_setCodigoProducto(this,codigoProductoAux)&&
         !Venta_setCantidad(this,cantidadInt)&&
-        !Venta_setPrecioUnitario(this,precioUnitarioInt))
+        !Venta_setPrecioUnitario(this,precioUnitarioInt)&&
+        !Venta_setCuitCliente(this,cuitClienteAux)&&
+        !Venta_setFecha(this,fechaAux))
             return this;
     }
 
@@ -242,18 +244,17 @@ float Venta_getPrecioUnitario(Venta* this,float* precioUnitario)
 int Venta_mostrar(void* pVenta)
 {
     int retorno = -1;
-    int auxId;
-    char auxCodigoProducto[128];
-    char auxCuit[128];
-    char auxFecha[128];
     int auxIdVenta;
     int auxCantidad;
     float auxPrecioUnitario;
+    char auxCodigoProducto[128];
+    char auxCuit[128];
+    char auxFecha[128];
 
     if(pVenta != NULL)
     {
-        Venta_getId(pVenta,&auxId);
-        if(auxId != -1)
+        Venta_getId(pVenta,&auxIdVenta);
+        if(auxIdVenta != -1)
         {
             Venta_getCodigoProducto(pVenta,auxCodigoProducto);
             Venta_getCantidad(pVenta,&auxCantidad);
@@ -262,12 +263,12 @@ int Venta_mostrar(void* pVenta)
             Venta_getFecha(pVenta,auxFecha);
             Venta_getCuitCliente(pVenta,auxCuit);
 
-            printf("\nID: %d",auxIdVenta);
-            printf("\nCodigo Producto: %s",auxCodigoProducto);
-            printf("\nCantidad: %d",auxCantidad);
-            printf("\nPrecio Unitario: %f\n",auxPrecioUnitario);
-            printf("\nCUIT : %s\n",auxCuit);
-            printf("\nFECHA: %s\n",auxFecha);
+            printf("\n ID: %d\n ",auxIdVenta);
+            printf("Codigo Producto: %s\n ",auxCodigoProducto);
+            printf("Precio Unitario: %f\n ",auxPrecioUnitario);
+            printf("Cantidad: %d\n ",auxCantidad);
+            printf("CUIT : %s\n ",auxCuit);
+            printf("FECHA: %s\n  ",auxFecha);
             retorno = 0;
         }
     }
@@ -275,7 +276,7 @@ int Venta_mostrar(void* pVenta)
 }
 
 
-int Venta_getAll(Venta* this,char* codigoProducto,char* cuitCliente,int* cantidad,float* precioUnitario,int* idVenta)
+int Venta_getAll(Venta* this,char* codigoProducto,char* cuitCliente,char* fecha,int* cantidad,float* precioUnitario,int* idVenta)
 {
     int retorno = -1;
 
@@ -286,6 +287,7 @@ int Venta_getAll(Venta* this,char* codigoProducto,char* cuitCliente,int* cantida
         Venta_getCantidad(this,cantidad);
         Venta_getPrecioUnitario(this,precioUnitario);
         Venta_getId(this,idVenta);
+        Venta_getFecha(this,fecha);
         retorno = 0;
     }
     return retorno;
@@ -334,6 +336,8 @@ int Venta_getFecha(Venta* this,char* fecha)
     }
     return retorno;
 }
+
+///*********************************************************************************
 int Venta_Mayor(void* this)
 {
     int retorno = 0;
@@ -344,15 +348,12 @@ int Venta_Mayor(void* this)
 
     if(this != NULL)
     {
-
         if(auxPrecio > 10000)
         {
-            contadorCantidad++;
+            contadorCantidad = contadorCantidad + 1;
             retorno = contadorCantidad;
         }
-
     }
-
     return retorno;
 }
 
@@ -366,15 +367,12 @@ int Venta_MayorMas(void* this)
 
     if(this != NULL)
     {
-
         if(auxPrecio > 20000)
         {
-            contadorCantidad++;
+            contadorCantidad = contadorCantidad + 1;
             retorno = contadorCantidad;
         }
-
     }
-
     return retorno;
 }
 
@@ -390,9 +388,7 @@ int Venta_cantidadUnidadesTotal(void* this)
     {
         contadorCantidad = contadorCantidad + auxCantidad;
         retorno = contadorCantidad;
-
     }
-
     return retorno;
 }
 
@@ -413,5 +409,37 @@ int Venta_cantidadTvLcd(void* this)
         }
     }
 
+    return retorno;
+}
+
+///*********************************************************************************
+
+
+/**
+*\brief Se recorre array para encontrar elemento por ID
+*\param pArrayListEmployee Es el array para recorrer
+*\param idIngresado Es ID para encontrar
+*\return Retorna el elemento sino retorna NULL
+*/
+Venta* Venta_getById(void* listaVenta,int idIngresado)
+{
+    Venta* retorno = NULL;
+    int i;
+    Venta* auxVenta;
+    int auxID = 0;
+
+    if(listaVenta != NULL)
+    {
+        for(i=0;i<ll_len(listaVenta);i++)//Recorro todo el array hasta el LEN
+        {
+            auxVenta = ll_get(listaVenta,i);//Obtengo el elemento del array en posicion index
+            Venta_getId(auxVenta,&auxID);//Obtengo el ID del elemento
+            if(auxID == idIngresado)
+            {
+                retorno = auxVenta;
+                break;
+            }
+        }
+    }
     return retorno;
 }

@@ -795,7 +795,6 @@ int EsEntero(char *pBuffer, int limite)
         (pBuffer[0] == '-' || pBuffer[0] == '+' ||
         (pBuffer[0]>='0' && pBuffer[0]<='9')))
     {
-
         retorno = 1;
         for(i=1; i < limite && pBuffer[i] != '\0'; i++)
         {
@@ -828,26 +827,6 @@ int EsNombre(char* pBuffer,int limite)
     return retorno;
 }
 
-int EsFecha(int dia, int mes, int anio)
-{
-    int retorno = 0;
-    if(dia > 0 && mes > 0 &&  anio > 0)
-    {
-        if(((mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) &&
-                (dia > 0 && dia <= 31)) ||
-                ((mes == 4 || mes == 6 || mes == 9 || mes == 11) &&
-                 (dia > 0 && dia <= 30)) ||
-                ((mes == 2 && (anio % 4) == 0) &&
-                 (dia > 0 && dia <= 29)) ||
-                ((mes == 2 && (anio % 4) != 0) &&
-                 (dia > 0 && dia <= 28)))
-        {
-            retorno = 1;
-        }
-    }
-    return retorno;
-}
-
 int EsCuit(char *pBuffer, int limite)
 {
     int retorno = 0;
@@ -868,7 +847,15 @@ int EsCuit(char *pBuffer, int limite)
     return retorno;
 }
 
-int EsFloatPositivo(char *pBuffer, int limite)
+/**
+* \brief Evalua si se trata de un float
+* \param pBuffer Es la cadena que evaluamos
+* \param limite Es el numero maximo de cifras
+* \return En caso de exito retorna 1, si no 0
+*
+*/
+
+int EsFloat(char *pBuffer, int limite)
 {
     int retorno = 0;
     int i;
@@ -893,24 +880,38 @@ int EsFloatPositivo(char *pBuffer, int limite)
     }
     return retorno;
 }
-int EsTexto(char *pBuffer, int limite)
+
+/**
+ * \brief Verifica si el valor recibido contiene solo letras,números o guiones
+ * \param array Es el string para validar el tipo
+ * \return 1 si contiene solo espacio o letras y números, y 0 si no lo es
+ *
+ */
+
+int EsAlfaNumerico(char* array,int size)
 {
+    int i=0;
     int retorno = 0;
-    int i;
-    if(pBuffer != NULL && limite > 0 && strlen(pBuffer) > 0)
+    int contadorSimbolos = 0;
+
+    if(array != NULL && size > 0)
     {
         retorno = 1;
-        for(i=0; i < limite && pBuffer[i] != '\0'; i++)
+        for(i=0;i<size;i++)
         {
-            if(!(   (pBuffer[i] >= ' ' && pBuffer[i] <= '"') ||
-                    pBuffer[i] == '(' || pBuffer[i] == ')' ||
-                    (pBuffer[i] >= ',' && pBuffer[i] <= '.') ||
-                    (pBuffer[i] >= '0' && pBuffer[i] <= ';') ||
-                    (pBuffer[i] >= '?' && pBuffer[i] <= 'Z') ||
-                    (pBuffer[i] >= 'a' && pBuffer[i] <= 'z')))
+            if((array[i] != '_') &&
+              (array[i] < 'a' || array[i] > 'z') &&
+              (array[i] < 'A' || array[i] > 'Z') &&
+              (array[i] < '0' || array[i] > '9') &&
+               contadorSimbolos > 2)
             {
                 retorno = 0;
                 break;
+            }
+
+            if(array[i] == '_')
+            {
+                contadorSimbolos++;
             }
         }
     }
