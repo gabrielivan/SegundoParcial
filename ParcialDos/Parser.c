@@ -5,9 +5,9 @@
 #include "Venta.h"
 #include "informes.h"
 
-/** \brief Parsea los datos de los empleados desde el archivo data.csv (modo texto).
+/** \brief Parsea los datos de las ventas desde el archivo data.csv (modo texto).
  * \param FILE* pFile Puntero del tipo file al archivo para parsear
- * \param listaVenta LinkedList* lista donde se van a a guardar los empleados
+ * \param listaVenta LinkedList* lista donde se van a a guardar las ventas
  * \return en caso de exito retorna 0 y en caso de error retorna -1
  */
 
@@ -59,13 +59,18 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* listaVenta)
             {
                 retorno = 0;
                 ll_add(listaVenta,pVenta);
-                Venta_mostrar(pVenta);
             }
 
         }
     }
     return retorno;
 }
+
+/** \brief Parsea los datos del linked list al archivo data.csv (modo texto).
+ * \param pFile Es el puntero a archivo para escribir los datos
+ * \param listaVentas Es la LinkedList de donde se toman los datos
+ * \return Retorna 0 si existe el archivo y el LinkedList sino retorna -1
+ */
 
 int parser_SaveToText(FILE* pFile,LinkedList* listaVentas)
 {

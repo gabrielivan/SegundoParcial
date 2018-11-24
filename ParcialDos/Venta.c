@@ -6,7 +6,7 @@
 #include "utn.h"
 
 /**
-*\brief Reservar espacio en memoria para un elemento
+*\brief Reserva espacio en memoria para un elemento
 *\param void
 *\return Retorna el elemento si reserva memoria sino NULL
 */
@@ -27,7 +27,7 @@ Venta* Venta_new()
 
 /**
 *\brief Libera espacio en memoria ocupado por elemento
-*\param tihs Es el elemento
+*\param this Es el elemento a liberar
 *\return Retorna 0 si logra liberar sino retorna -1
 */
 
@@ -43,10 +43,11 @@ int Venta_delete(Venta* this)
 }
 
 /**
-*\brief Se realiza el alta de un elemento desde consola
-*\param pArrayListEmpleado Es el array para ingresar elemento
-*\return Retorna 0 si logra agregar elemento sino retorna -1
-*/
+ * \brief Asigna el espacio de memoria para la creacion de un venta con todos sus atributos cargados,
+ *        y verifica que sean correctos antes de crear la nueva venta.
+ * \return Employee* En caso de exito retorna el puntero al empleado, si no NULL
+ *
+ */
 
 Venta* Venta_newConParametros(char* idVenta,char* fecha,char* codigoProducto,char* cantidad,char* precioUnitario,char* cuitCliente)//lee desde el archivo
 {
@@ -77,18 +78,18 @@ Venta* Venta_newConParametros(char* idVenta,char* fecha,char* codigoProducto,cha
         !Venta_setFecha(this,fechaAux))
             return this;
     }
-//    else
-//    {
-//        printf(" \nVENTA NO VALIDA: \n");
-//        printf("\n ID: %s\n ",idVenta);
-//        printf("CANTIDAD: %s\n ",cantidad);
-//        printf("PRECIO: %s\n ",precioUnitario);
-//        printf("CODIGO PRODUCTO: %s\n ",codigoProducto);
-//        printf("CUIT DEL CLIENTE: %s\n ",cuitCliente);
-//        printf("FECHA: %s\n ",fecha);
-//        printf("\n\n");
-//
-//    }
+    else
+    {
+        printf(" \nVENTA NO VALIDA: \n");
+        printf("\n ID: %s\n ",idVenta);
+        printf("CANTIDAD: %s\n ",cantidad);
+        printf("PRECIO: %s\n ",precioUnitario);
+        printf("CODIGO PRODUCTO: %s\n ",codigoProducto);
+        printf("CUIT DEL CLIENTE: %s\n ",cuitCliente);
+        printf("FECHA: %s\n ",fecha);
+        printf("\n\n");
+
+    }
 
     Venta_delete(this);
     return NULL;
@@ -140,9 +141,9 @@ int Venta_getId(Venta* this,int* idVenta)
 }
 
 /**
-*\brief Se setea el nombre del elemento
+*\brief setea el codigo producto del elemento
 *\param this Es el elemento
-*\param nombre Es el nombre para setear
+*\param codigo producto Es el codigo producto para setear
 *\return Retorna 0 si setea elemento sino retorna -1
 */
 
@@ -158,10 +159,10 @@ int Venta_setCodigoProducto(Venta* this,char* codigoProducto)
 }
 
 /**
-*\brief Se obtiene el nombre del elemento
+*\brief obtiene el codigo producto del elemento
 *\param this Es el elemento
-*\param nombre Es el nombre que se obtiene
-*\return Retorna 0 si obtiene elemento sino retorna -1
+*\param codigo producto Es el codigo producto a obtener
+*\return Retorna 0 si se obtiene el elemento, sino retorna -1
 */
 
 int Venta_getCodigoProducto(Venta* this,char* codigoProducto)
@@ -176,9 +177,9 @@ int Venta_getCodigoProducto(Venta* this,char* codigoProducto)
 }
 
 /**
-*\brief Se setea las horas trabajadas del elemento
+*\brief Se setea la cantidad del elemento
 *\param this Es el elemento
-*\param horasTrabajadas Es la cantidad de horas para setear
+*\param cantidad Es la cantidad de horas para setear
 *\return Retorna 0 si setea elemento sino retorna -1
 */
 
@@ -194,9 +195,9 @@ int Venta_setCantidad(Venta* this,int cantidad)
 }
 
 /**
-*\brief Se obtienen las horas trabajadas del elemento
+*\brief Se obtienen la cantidad del elemento
 *\param this Es el elemento
-*\param horasTrabajadas Es la cantidad de horas que se obtiene
+*\param cantidad Es la cantidad que se obtiene
 *\return Retorna 0 si setea elemento sino retorna -1
 */
 
@@ -212,9 +213,9 @@ int Venta_getCantidad(Venta* this,int* cantidad)
 }
 
 /**
-*\brief Se setea el sueldo del elemento
+*\brief Se setea el precio unitario del elemento
 *\param this Es el elemento
-*\param sueldo Es el sueldo para setear
+*\param precio unitario Es el precio unitario para setear
 *\return Retorna 0 si setea elemento sino retorna -1
 */
 
@@ -230,9 +231,9 @@ float Venta_setPrecioUnitario(Venta* this,float precioUnitario)
 }
 
 /**
-*\brief Se obtiene el sueldo del elemento
+*\brief Se obtiene el precio unitario del elemento
 *\param this Es el elemento
-*\param sueldo Es el sueldo que se obtiene
+*\param precio unitario Es el precio unitario que se obtiene
 *\return Retorna 0 si setea elemento sino retorna -1
 */
 
@@ -249,7 +250,7 @@ float Venta_getPrecioUnitario(Venta* this,float* precioUnitario)
 
 /**
 *\brief Se muestran los datos de todos los campos del elemento
-*\param this Es el puntero al elemento
+*\param pVenta Es el puntero al elemento
 *\return Retorna 0 si el elemento es diferente a NULL sino retorna -1
 */
 
@@ -287,6 +288,11 @@ int Venta_mostrar(void* pVenta)
     return retorno;
 }
 
+/**
+*\brief Se obtienen todos los campos del elemento
+*\param this Venta* Es el elemento
+*\return Retorna 0 si obtienen todos los elementos sino retorna -1
+*/
 
 int Venta_getAll(Venta* this,char* codigoProducto,char* cuitCliente,char* fecha,int* cantidad,float* precioUnitario,int* idVenta)
 {
@@ -305,6 +311,13 @@ int Venta_getAll(Venta* this,char* codigoProducto,char* cuitCliente,char* fecha,
     return retorno;
 }
 
+/**
+*\brief Se setea el cuit del cliente del elemento
+*\param this Es el elemento
+*\param cuitCliente Es el cuit del cliente a setear
+*\return Retorna 0 si setea elemento sino retorna -1
+*/
+
 int Venta_setCuitCliente(Venta* this,char* cuitCliente)
 {
     int retorno=-1;
@@ -315,6 +328,13 @@ int Venta_setCuitCliente(Venta* this,char* cuitCliente)
     }
     return retorno;
 }
+
+/**
+*\brief Se obtiene el cuit del cliente del elemento
+*\param this Es el elemento
+*\param cuitCliente Es el cuit del cliente a obtener
+*\return Retorna 0 si obtiene el elemento sino retorna -1
+*/
 
 int Venta_getCuitCliente(Venta* this,char* cuitCliente)
 {
@@ -327,6 +347,13 @@ int Venta_getCuitCliente(Venta* this,char* cuitCliente)
     return retorno;
 }
 
+/**
+*\brief Se setea la fecha del elemento
+*\param this Es el elemento
+*\param fecha es la fecha a setear
+*\return Retorna 0 si setea el elemento sino retorna -1
+*/
+
 int Venta_setFecha(Venta* this,char* fecha)
 {
     int retorno=-1;
@@ -337,6 +364,13 @@ int Venta_setFecha(Venta* this,char* fecha)
     }
     return retorno;
 }
+
+/**
+*\brief Se obtiene la fecha del elemento
+*\param this Es el elemento
+*\param fecha es la fecha a obtener
+*\return Retorna 0 si obtiene el elemento sino retorna -1
+*/
 
 int Venta_getFecha(Venta* this,char* fecha)
 {
@@ -349,7 +383,16 @@ int Venta_getFecha(Venta* this,char* fecha)
     return retorno;
 }
 
-///*********************************************************************************
+///********************************FUNCIONES CRITERIO*************************************************
+
+
+/**
+ * \brief Filtra la cantidad de ventas que el precio unitario es mayor a 10000
+ * \param this void* Es la venta que se le calcula el precio unitario mayor a 10000
+ * \return 0 En caso de que no filtro,sino retorna la cantidad de ventas que el precio unitario es mayor a 10000
+ *
+ */
+
 int Venta_Mayor(void* this)
 {
     int retorno = 0;
@@ -370,6 +413,13 @@ int Venta_Mayor(void* this)
     }
     return retorno;
 }
+
+/**
+ * \brief Filtra la cantidad de ventas que el precio unitario es mayor a 20000
+ * \param this void* Es la venta que se le calcula el precio unitario mayor a 20000
+ * \return 0 En caso de que no filtro,sino retorna la cantidad de ventas que el precio unitario es mayor a 20000
+ *
+ */
 
 int Venta_MayorMas(void* this)
 {
@@ -392,6 +442,13 @@ int Venta_MayorMas(void* this)
     return retorno;
 }
 
+/**
+ * \brief cuenta la cantidad de unidades total por venta
+ * \param this void* Es la venta que se le cuenta la cantidad de unidades total
+ * \return 0 En caso de que no conto nada,sino retorna la cantidad de unidades total
+ *
+ */
+
 int Venta_cantidadUnidadesTotal(void* this)
 {
     int retorno = 0;
@@ -407,6 +464,13 @@ int Venta_cantidadUnidadesTotal(void* this)
     }
     return retorno;
 }
+
+/**
+ * \brief cuenta la cantidad de unidades por venta que su codigo producto es de tipo LCD_TV
+ * \param this void* Es la venta que se le cuenta la cantidad de unidades que su codigo producto es de tipo LCD_TV
+ * \return 0 En caso de que no conto nada,sino retorna la cantidad
+ *
+ */
 
 int Venta_cantidadTvLcd(void* this)
 {
@@ -430,34 +494,4 @@ int Venta_cantidadTvLcd(void* this)
     return retorno;
 }
 
-///*********************************************************************************
-
-
-/**
-*\brief Se recorre array para encontrar elemento por ID
-*\param pArrayListEmployee Es el array para recorrer
-*\param idIngresado Es ID para encontrar
-*\return Retorna el elemento sino retorna NULL
-*/
-Venta* Venta_getById(void* listaVenta,int idIngresado)
-{
-    Venta* retorno = NULL;
-    int i;
-    Venta* auxVenta;
-    int auxID = 0;
-
-    if(listaVenta != NULL)
-    {
-        for(i=0;i<ll_len(listaVenta);i++)//Recorro todo el array hasta el LEN
-        {
-            auxVenta = ll_get(listaVenta,i);//Obtengo el elemento del array en posicion index
-            Venta_getId(auxVenta,&auxID);//Obtengo el ID del elemento
-            if(auxID == idIngresado)
-            {
-                retorno = auxVenta;
-                break;
-            }
-        }
-    }
-    return retorno;
-}
+///****************************FIN DE LAS FUNCIONES CRITERIO*****************************************************

@@ -36,15 +36,18 @@ float Venta_setPrecioUnitario(Venta* this,float precioUnitario);
 float Venta_getPrecioUnitario(Venta* this,float* precioUnitario);
 
 int Venta_getAll(Venta* this,char* codigoProducto,char* cuitCliente,char* fecha,int* cantidad,float* precioUnitario,int* idVenta);
+
 Venta* Venta_getById(void* listaVenta,int idIngresado);
 
 int Venta_mostrar(void* pVenta);
 
-
+///************FUNCIONES CRITERIO***********
 
 int Venta_Mayor(void* this);
 int Venta_MayorMas(void* this);
 int Venta_cantidadUnidadesTotal(void* this);
 int Venta_cantidadTvLcd(void* this);
+
+///******FIN DE LAS FUNCIONES CRITERIO*******
 
 #endif // VENTA_H_INCLUDED

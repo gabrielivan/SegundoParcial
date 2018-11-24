@@ -156,3 +156,80 @@
 	<string.h>
 	"utn.h"
 
+1543071410 source:c:\users\chris_x4urr38\desktop\segundoparcial-master\parcialdos\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Venta.h"
+	"parser.h"
+	"utn.h"
+
+1542981446 c:\users\chris_x4urr38\desktop\segundoparcial-master\parcialdos\linkedlist.h
+
+1543071080 c:\users\chris_x4urr38\desktop\segundoparcial-master\parcialdos\venta.h
+
+1542981446 c:\users\chris_x4urr38\desktop\segundoparcial-master\parcialdos\parser.h
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Venta.h"
+	"utn.h"
+
+1542981446 c:\users\chris_x4urr38\desktop\segundoparcial-master\parcialdos\utn.h
+
+1543071080 source:c:\users\chris_x4urr38\desktop\segundoparcial-master\parcialdos\informes.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Venta.h"
+	"informes.h"
+	"utn.h"
+
+1542981446 c:\users\chris_x4urr38\desktop\segundoparcial-master\parcialdos\informes.h
+	<stdlib.h>
+	<stdio.h>
+	"LinkedList.h"
+	"Venta.h"
+	"utn.h"
+
+1543071080 source:c:\users\chris_x4urr38\desktop\segundoparcial-master\parcialdos\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1543072107 source:c:\users\chris_x4urr38\desktop\segundoparcial-master\parcialdos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Venta.h"
+	"utn.h"
+	"Parser.h"
+	"informes.h"
+
+1543071427 c:\users\chris_x4urr38\desktop\segundoparcial-master\parcialdos\controller.h
+
+1543071617 source:c:\users\chris_x4urr38\desktop\segundoparcial-master\parcialdos\parser.c
+	"Parser.h"
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Venta.h"
+	"informes.h"
+
+1542981446 source:c:\users\chris_x4urr38\desktop\segundoparcial-master\parcialdos\utn.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+	"utn.h"
+
+1543068884 source:c:\users\chris_x4urr38\desktop\segundoparcial-master\parcialdos\venta.c
+	"Venta.h"
+	"LinkedList.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+

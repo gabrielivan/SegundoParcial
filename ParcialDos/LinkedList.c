@@ -637,6 +637,13 @@ LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void* pElement))
     return returnAux;
 }
 
+/** \brief Realiza una funcion con cada elemento
+ * \param this LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion criterio
+ * \return int Retorna  (-1) Error: si el puntero a la lista es NULL o si el puntero a la funcion es NULL
+ *                      (0) Si ok
+ */
+
 int ll_map(LinkedList* this, int (*pFunc)(void*))
 {
     int returnAux = -1;
@@ -663,6 +670,12 @@ int ll_map(LinkedList* this, int (*pFunc)(void*))
 
     return returnAux;
 }
+
+/** \brief Cuenta la cantidad de un elemento evaluando por una funcion filtro
+ * \param this LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion criterio que devuelve un 1 si paso el filtro
+ * \return Retorna 0 si no pudo contar ,sino retorna la cantidad encontrada de elementos que pasan el filtro
+ */
 
 int ll_count(LinkedList* this,int (*pFunc)(void* element))
 {
