@@ -9,11 +9,11 @@
 
 /****************************************************
     Menu:
-    01. Cargar archivo
-    02. Guardar archivo
-    03. Listar empleados
-    04. Calcular aumento
-    05. Salir
+    01. Cargar archivo.
+    02. Guardar archivo.
+    03. Listar ventas.
+    04. mostrar informes.
+    05. Salir.
 *****************************************************/
 
 int main()
