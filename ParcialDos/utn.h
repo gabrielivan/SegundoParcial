@@ -53,10 +53,12 @@ int utn_getCelularArgentino(char *pCelular,
                             char *mensajeError,
                             int reintentos);
 
+int validator_isValidEntero(char* array,int size);
 int EsEntero(char *pBuffer, int limite);
 int EsNombre(char* pBuffer,int limite);
 int EsCuit(char *pBuffer, int limite);
 int EsFloat(char *pBuffer, int limite);
 int EsAlfaNumerico(char* array,int size);
+int validator_isValidFecha(char* pArray);
 
 #endif // UTN_H_INCLUDED

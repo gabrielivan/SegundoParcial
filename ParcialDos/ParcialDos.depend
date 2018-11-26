@@ -79,7 +79,7 @@
 	"Venta.h"
 	"utn.h"
 
-1542992161 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\controller.c
+1543050830 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\controller.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -87,20 +87,20 @@
 	"parser.h"
 	"utn.h"
 
-1542913790 c:\users\admin\desktop\segundoparcial-master\parcialdos\linkedlist.h
+1543050830 c:\users\admin\desktop\segundoparcial-master\parcialdos\linkedlist.h
 
-1542990810 c:\users\admin\desktop\segundoparcial-master\parcialdos\venta.h
+1543050830 c:\users\admin\desktop\segundoparcial-master\parcialdos\venta.h
 
-1542913790 c:\users\admin\desktop\segundoparcial-master\parcialdos\parser.h
+1543050830 c:\users\admin\desktop\segundoparcial-master\parcialdos\parser.h
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Venta.h"
 	"utn.h"
 
-1542998941 c:\users\admin\desktop\segundoparcial-master\parcialdos\utn.h
+1543244818 c:\users\admin\desktop\segundoparcial-master\parcialdos\utn.h
 
-1542992069 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\informes.c
+1543050830 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\informes.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -108,20 +108,20 @@
 	"informes.h"
 	"utn.h"
 
-1542913790 c:\users\admin\desktop\segundoparcial-master\parcialdos\informes.h
+1543050830 c:\users\admin\desktop\segundoparcial-master\parcialdos\informes.h
 	<stdlib.h>
 	<stdio.h>
 	"LinkedList.h"
 	"Venta.h"
 	"utn.h"
 
-1542996672 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\linkedlist.c
+1543050830 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\linkedlist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"LinkedList.h"
 
-1542998041 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\main.c
+1543050830 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -131,9 +131,9 @@
 	"Parser.h"
 	"informes.h"
 
-1542913790 c:\users\admin\desktop\segundoparcial-master\parcialdos\controller.h
+1543050830 c:\users\admin\desktop\segundoparcial-master\parcialdos\controller.h
 
-1542998151 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\parser.c
+1543050830 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\parser.c
 	"Parser.h"
 	<stdio.h>
 	<stdlib.h>
@@ -141,14 +141,14 @@
 	"Venta.h"
 	"informes.h"
 
-1542999248 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\utn.c
+1543244818 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\utn.c
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 	<ctype.h>
 	"utn.h"
 
-1542998973 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\venta.c
+1543244907 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\venta.c
 	"Venta.h"
 	"LinkedList.h"
 	<stdio.h>

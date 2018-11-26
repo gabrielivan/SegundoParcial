@@ -60,7 +60,7 @@ Venta* Venta_newConParametros(char* idVenta,char* fecha,char* codigoProducto,cha
     char cuitClienteAux[1024];
     char fechaAux[1024];
 
-    if(EsEntero(idVenta,1024)&& EsEntero(cantidad,1024) && EsFloat(precioUnitario,1024) && EsCuit(cuitCliente,1024) && EsAlfaNumerico(codigoProducto,1024))
+    if(EsEntero(idVenta,1024)&& EsEntero(cantidad,1024) && EsFloat(precioUnitario,1024) && EsCuit(cuitCliente,1024) && EsAlfaNumerico(codigoProducto,1024) && validator_isValidFecha(fecha))
     {
         idVentaInt = atoi(idVenta);
         cantidadInt = atoi(cantidad);
