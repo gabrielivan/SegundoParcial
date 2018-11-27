@@ -45,7 +45,7 @@ int Venta_delete(Venta* this)
 /**
  * \brief Asigna el espacio de memoria para la creacion de un venta con todos sus atributos cargados,
  *        y verifica que sean correctos antes de crear la nueva venta.
- * \return Employee* En caso de exito retorna el puntero al empleado, si no NULL
+ * \return Venta* En caso de exito retorna el puntero a la venta, si no NULL
  *
  */
 
@@ -60,7 +60,7 @@ Venta* Venta_newConParametros(char* idVenta,char* fecha,char* codigoProducto,cha
     char cuitClienteAux[1024];
     char fechaAux[1024];
 
-    if(EsEntero(idVenta,1024)&& EsEntero(cantidad,1024) && EsFloat(precioUnitario,1024) && EsCuit(cuitCliente,1024) && EsAlfaNumerico(codigoProducto,1024) && validator_isValidFecha(fecha))
+    if(EsEntero(idVenta,1024)&& EsEntero(cantidad,1024) && EsFloat(precioUnitario,1024) && EsCuit(cuitCliente,1024) && EsAlfaNumerico(codigoProducto,1024) && EsFecha(fecha))
     {
         idVentaInt = atoi(idVenta);
         cantidadInt = atoi(cantidad);

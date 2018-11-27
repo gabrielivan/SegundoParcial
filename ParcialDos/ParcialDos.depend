@@ -98,7 +98,7 @@
 	"Venta.h"
 	"utn.h"
 
-1543244818 c:\users\admin\desktop\segundoparcial-master\parcialdos\utn.h
+1543282814 c:\users\admin\desktop\segundoparcial-master\parcialdos\utn.h
 
 1543050830 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\informes.c
 	<stdio.h>
@@ -141,14 +141,14 @@
 	"Venta.h"
 	"informes.h"
 
-1543244818 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\utn.c
+1543286436 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\utn.c
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 	<ctype.h>
 	"utn.h"
 
-1543244907 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\venta.c
+1543282815 source:c:\users\admin\desktop\segundoparcial-master\parcialdos\venta.c
 	"Venta.h"
 	"LinkedList.h"
 	<stdio.h>

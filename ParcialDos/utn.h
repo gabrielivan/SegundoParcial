@@ -59,6 +59,6 @@ int EsNombre(char* pBuffer,int limite);
 int EsCuit(char *pBuffer, int limite);
 int EsFloat(char *pBuffer, int limite);
 int EsAlfaNumerico(char* array,int size);
-int validator_isValidFecha(char* pArray);
+int EsFecha(char* pArray);
 
 #endif // UTN_H_INCLUDED

@@ -787,6 +787,14 @@ int utn_getFecha(   char *pFecha, int limite, char *mensaje,
     return retorno;
 }
 
+/**
+* \brief Evalua si se trata de un entero
+* \param pBuffer Es la cadena que evaluamos
+* \param limite Es el numero maximo de cifras
+* \return En caso de exito retorna 1, si no 0
+*
+*/
+
 int EsEntero(char *pBuffer, int limite)
 {
     int retorno = 0;
@@ -808,6 +816,14 @@ int EsEntero(char *pBuffer, int limite)
     return retorno;
 }
 
+/**
+* \brief  Evalua si es un nombrer por mayuscula y minusculas
+* \param pBuffer Es la cadena que evaluamos
+* \param limite Es el tamano maximo del string
+* \return En caso de exito retorna 1, si no 0
+*
+*/
+
 int EsNombre(char* pBuffer,int limite)
 {
     int retorno = 0;
@@ -826,6 +842,14 @@ int EsNombre(char* pBuffer,int limite)
     }
     return retorno;
 }
+
+/**
+* \brief Evalua si es un Cuil o Cuit (XX-XXXXXXXX-X)
+* \param pBuffer Es la cadena que evaluamos
+* \param limite Es el tamano maximo del string
+* \return En caso de exito retorna 1, si no 0
+*
+*/
 
 int EsCuit(char *pBuffer, int limite)
 {
@@ -911,8 +935,15 @@ int EsAlfaNumerico(char* array,int size)
     return retorno;
 }
 
+/**
+ * \brief Verifica si es una fecha correcta
+ * \param pArray Es el string para validar
+ * \return 1 si: esta delimitado solo por barra,si el dia es mayor o igual a 1 y menor o igual a 31 y el mes mayor o igual a 1 y menor o igual a 12
+ *         0 si: no cumple ninguna de las condiciones
+ *        -1 en caso de error.
+ */
 
-int validator_isValidFecha(char* pArray)
+int EsFecha(char* pArray)
 {
     int retorno = -1;
     char dias[3];
@@ -921,78 +952,117 @@ int validator_isValidFecha(char* pArray)
     int dia;
     int mes;
     int anio;
-    static int i = 1;
 
     if(sscanf(pArray, "%2s/%2s/%4s", dias, meses, anios) == 3 && pArray != NULL )
     {
-        i++;
-        mes=atoi(meses);
-        dia=atoi(dias);
-        anio=atoi(anios);
-
-        if ( mes >= 1 && mes <= 12 && validator_isValidEntero(dias,3))
+        if(EsEntero(dias,3) && EsEntero(meses,3) && EsEntero(anios,5))
         {
-            switch ( mes )
+            mes=atoi(meses);
+            dia=atoi(dias);
+            anio=atoi(anios);
+        }
+        else
+        {
+            retorno = 0;
+        }
+
+        if (mes >= 1 && mes <= 12 && dia >= 1 && dia <= 31)
+        {
+            switch (mes)
             {
             case  1 :
-            case  3 :
-            case  5 :
-            case  7 :
-            case  8 :
-            case 10 :
-            case 12 :
-                if (dia >= 1 && dia <= 31)
+                if(dia >= 1 && dia <= 31)
                 {
-                    //printf( "\n   FECHA CORRECTA" );
-                }
-                else
-                {
-                    //printf( "\n   FECHA INCORRECTA" );
-                    retorno = 0;
+                    retorno = 1;
                 }
                 break;
-
-            case  4 :
-            case  6 :
-            case  9 :
-            case 11 :
-                if (dia >= 1 && dia <= 30)
-                {
-                    //printf( "\n   FECHA CORRECTA" );
-                }
-                else
-                {
-                    //printf( "\n   FECHA INCORRECTA\nNOOOOOOOOO" );
-                    retorno = 0;
-                }
-                break;
-
             case  2 :
                 if( (anio % 4 == 0 && anio % 100 != 0) || anio % 400 == 0 )
                 {
                     if ( dia >= 1 && dia <= 29 )
                     {
-                        //      printf( "\n   FECHA CORRECTA" );
+                        retorno = 1;
                     }
                     else
                     {
-                        //    printf( "\n   FECHA INCORRECTA" );
                         retorno = 0;
                     }
                 }
                 else if ( dia >= 1 && dia <= 28 )
                 {
+                    retorno = 1;
                 }
                 else
                 {
                     retorno = 0;
                 }
+                break;
+            case  3 :
+                if(dia >= 1 && dia <= 31)
+                {
+                    retorno = 1;
+                }
+                break;
+            case  4 :
+                if(dia >= 1 && dia <= 30)
+                {
+                    retorno = 1;
+                }
+                break;
+            case  5 :
+                if(dia >= 1 && dia <= 31)
+                {
+                    retorno = 1;
+                }
+                break;
+            case  6 :
+                if(dia >= 1 && dia <= 30)
+                {
+                    retorno = 1;
+                }
+                break;
+            case  7 :
+                if(dia >= 1 && dia <= 31)
+                {
+                    retorno = 1;
+                }
+                break;
+            case  8 :
+                if(dia >= 1 && dia <= 31)
+                {
+                    retorno = 1;
+                }
+                break;
+             case  9 :
+                if(dia >= 1 && dia <= 30)
+                {
+                    retorno = 1;
+                }
+                break;
+             case 10 :
+                if(dia >= 1 && dia <= 31)
+                {
+                    retorno = 1;
+                }
+                break;
+             case 11 :
+                if(dia >= 1 && dia <= 30)
+                {
+                    retorno = 1;
+                }
+                break;
+             case 12 :
+                if (dia >= 1 && dia <= 31)
+                {
+                    retorno = 1;
+                }
+                break;
             }
         }
-    }
-    else
-    {
-        retorno = 0;
+        else
+        {
+            retorno = 0;
+        }
     }
     return retorno;
 }
